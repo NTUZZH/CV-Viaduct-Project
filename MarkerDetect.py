@@ -33,8 +33,8 @@ parameters.minMarkerPerimeterRate = 0.03
 parameters.cornerRefinementMethod = aruco.CORNER_REFINE_SUBPIX
 
 # Default paths
-DEFAULT_IMAGE_FOLDER = os.path.join("CV Viaduct", "iphone_images")
-DEFAULT_RESULTS_FOLDER = os.path.join("CV Viaduct", "results")
+DEFAULT_IMAGE_FOLDER = os.path.join("iphone_images")
+DEFAULT_RESULTS_FOLDER = os.path.join("results")
 
 # Required marker IDs
 REQUIRED_MARKERS = [0, 4]
