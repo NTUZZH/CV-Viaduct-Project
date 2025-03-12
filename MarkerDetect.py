@@ -33,7 +33,7 @@ parameters.minMarkerPerimeterRate = 0.03
 parameters.cornerRefinementMethod = aruco.CORNER_REFINE_SUBPIX
 
 # Default paths
-DEFAULT_IMAGE_FOLDER = os.path.join("iphone_images")
+DEFAULT_IMAGE_FOLDER = os.path.join("raw images")
 DEFAULT_RESULTS_FOLDER = os.path.join("results")
 
 # Required marker IDs

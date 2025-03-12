@@ -6,38 +6,66 @@ This project involves detecting markers and calibrating an iPhone camera (iPhone
 
 ## Project Context
 
-This research is conducted as part of computer vision studies at Nanyang Technological University. The project aims to develop reliable camera calibration techniques for structural monitoring of viaducts and similar infrastructure.
+This research is conducted as part of computer vision studies at Nanyang Technological University. The project aims to develop reliable CV techniques for segment displacement of viaducts. This project is built upon a real on-going viaduct construction project within NTU campus, Singapore.
 
 ## Project Structure
 
-- `MarkerDetect.py`: Contains functions for detecting ArUco markers in images and calculating relative poses.
-- `iphoneCameraCali.py`: Contains functions for calibrating the iPhone camera using a chessboard pattern.
+- `MarkerDetect.py`: Module for detecting and tracking ArUco markers, calculating relative poses between markers and camera.
+- `iphoneCameraCali.py`: Script for calibrating the iPhone 13 Pro Max camera using a chessboard pattern, generating intrinsic and extrinsic parameters.
 
 ## Requirements
 
-- Python 3.x
-- OpenCV
-- NumPy
-- Pillow
+- Python 3.8 or higher
+- OpenCV 4.5+
+- NumPy 1.20+
+- Pillow 8.0+
+- Matplotlib (for visualization)
+- SciPy (for mathematical operations)
 
 ## Installation
 
-1. Clone the repository.
-2. Install the required packages using `pip install -r requirements.txt`.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/cv-viaduct.git
+   cd cv-viaduct
+   ```
+   
+2. Create a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-1. Run `iphoneCameraCali.py` to calibrate the camera:
+1. Camera Calibration:
+   ```bash
+   python iphoneCameraCali.py --input_dir ./calibration_images --output_dir ./camera_parameters --grid_size 9x6 --square_size 25
    ```
-   python iphoneCameraCali.py --input_dir path/to/calibration/images --output_dir path/to/save/parameters
-   ```
+   Parameters:
+   - `--input_dir`: Directory containing calibration images
+   - `--output_dir`: Directory to save calibration parameters
+   - `--grid_size`: Dimensions of the checkerboard (inner corners)
+   - `--square_size`: Size of checkerboard squares in millimeters
 
-2. Use `MarkerDetect.py` to detect markers in images and analyze them:
+2. Marker Detection:
+   ```bash
+   python MarkerDetect.py --image ./test_images/sample.jpg --parameters ./camera_parameters/camera_params.json --marker_size 100
    ```
-   python MarkerDetect.py --image path/to/image --parameters path/to/camera/parameters
-   ```
+   Parameters:
+   - `--image`: Path to the image for marker detection
+   - `--parameters`: Path to camera calibration parameters
+   - `--marker_size`: Size of ArUco markers in millimeters (default: 100)
 
-3. The calibration results and marker detection outputs will be saved to the specified output directory.
+3. Batch Processing (for multiple images):
+   ```bash
+   python MarkerDetect.py --input_dir ./test_images --parameters ./camera_parameters/camera_params.json --output_dir ./results
+   ```
 
 ## Acknowledgments
 
